@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+.appStatus {
+  border-radius: 10px;
+  max-width: fit-content;
+}
+.notes {
+  background-color: #f7f3e3 !important;
+}
+
+.delete-btn {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  color: red;
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: #171123 !important;
+}
+
+.navbarHeader {
+  font-size: 2em !important ;
+  color: white !important;
+  font-weight: 600;
+}
+
+.t-white {
+  color: white;
+  font-weight: 500;
+}
+
+#notesBg {
+  background-color: #18314f;
+}
+
+#addNote {
+  margin-bottom: 1em;
+  color: black;
+  font-weight: 500;
+  background-color: #adff2f;
+  border-color: greenyellow;
+}
+#addApp {
+  background-color: #18314f;
+  border-color: #18314f;
+}
+
+#formCard {
+  background-color: #cae9ff;
+  padding: 1em;
+  border: 0px;
+  font-weight: 500;
+}
+
+td {
+  padding: 4px !important;
+  vertical-align: middle;
+}
+
+#appRow {
+  background-color: #ffffea;
+}
+
+#todayBtn {
+  background-color: #18314f;
+  border-color: #18314f;
+}
+
+.logoutBtn {
+  color: red;
+  font-size: 1.7em;
+}
+
+#welcome {
+  background-color: #171123;
+}
+
+/* waving hand */
+.waving-hand {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+  30% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(14deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+table tr td,
+table tr th {
+  background-color: rgba(210, 130, 240, 0) !important;
+}
