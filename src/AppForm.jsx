@@ -140,7 +140,7 @@ export default function AppForm({ setAdd, setShow }) {
                   <option value="">Select Status</option>
                   <option value="Pending">Pending</option>
                   <option value="Pending (Referral)">Pending (Referral)</option>
-                  <option value="Ongoing">Shortlisted</option>
+                  <option value="Shortlisted">Shortlisted</option>
                   <option value="Rejected">Rejected</option>
                 </Form.Select>
               </Col>

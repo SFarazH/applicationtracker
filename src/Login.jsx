@@ -9,7 +9,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loggedIn, setLogin] = useState(false);
   const cookies = new Cookies();
-  console.log(cookies);
+  // console.log(cookies);
   const handleSubmit = (e) => {
     e.preventDefault();
     const configuration = {
@@ -22,7 +22,7 @@ export default function Login() {
     };
     axios(configuration)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         setLogin(true);
         cookies.set("TOKEN", result.data.token, {
           path: "/",

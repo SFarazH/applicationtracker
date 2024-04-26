@@ -4,11 +4,8 @@ import { Button, Navbar, Table, Form, Row, Col } from "react-bootstrap";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Cookies from "universal-cookie";
-import { format } from "date-fns";
 import AppForm from "./AppForm";
-import Welcome from "./Welcome";
 import { FaCircle } from "react-icons/fa";
-import ResumeForm from "./ResumeForm";
 
 export default function Application(props) {
   const cookies = new Cookies();
@@ -74,7 +71,7 @@ export default function Application(props) {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const day = date.getDate();
-    const month = date.toLocaleString("default", { month: "long" }).slice(0,3);
+    const month = date.toLocaleString("default", { month: "long" }).slice(0, 3);
     const year = date.getFullYear().toString().slice(-2);
     const suffix =
       day === 1 ? "st" : day === 2 ? "nd" : day === 3 ? "rd" : "th";
@@ -84,6 +81,7 @@ export default function Application(props) {
   const displayApplications = () => {
     return (
       <>
+        {/* <ResumeForm/> */}
         <Table>
           <thead>
             <tr>
@@ -266,7 +264,6 @@ export default function Application(props) {
 
       {showForm && <AppForm setAdd={setAdd} setShow={setShow} />}
       {displayApplications()}
-      <ResumeForm/>
     </>
   );
 }
