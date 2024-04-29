@@ -7,6 +7,7 @@ import Cookies from "universal-cookie";
 import AppForm from "./AppForm";
 import { FaCircle } from "react-icons/fa";
 import Resume from "./Resume";
+import ResumeForm from "./ResumeForm";
 
 export default function Application(props) {
   const cookies = new Cookies();
@@ -231,7 +232,6 @@ export default function Application(props) {
       .get(url, config)
       .then((res) => {
         setData(res.data.applications);
-        console.log(res.data.applications);
       })
       .catch((error) => console.log(error));
   }, [add, email]);
@@ -266,6 +266,7 @@ export default function Application(props) {
       {showForm && <AppForm setAdd={setAdd} setShow={setShow} />}
       {displayApplications()}
       <Resume/>
+      
     </>
   );
 }

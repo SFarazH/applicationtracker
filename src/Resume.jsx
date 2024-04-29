@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { Button } from "react-bootstrap";
+import ResumeForm from "./ResumeForm";
 
 export default function Resume() {
   const [resumeData, setResume] = useState([]);
@@ -93,6 +94,7 @@ export default function Resume() {
     <>
       <h4>resume</h4>
       {displayResume()}
+      <ResumeForm setUpdate={setUpdate}/>
     </>
   );
 }
