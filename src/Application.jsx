@@ -6,6 +6,7 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import Cookies from "universal-cookie";
 import AppForm from "./AppForm";
 import { FaCircle } from "react-icons/fa";
+import Resume from "./Resume";
 
 export default function Application(props) {
   const cookies = new Cookies();
@@ -264,6 +265,7 @@ export default function Application(props) {
 
       {showForm && <AppForm setAdd={setAdd} setShow={setShow} />}
       {displayApplications()}
+      <Resume/>
     </>
   );
 }
