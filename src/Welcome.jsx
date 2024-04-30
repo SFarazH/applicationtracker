@@ -1,12 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import Cookies from "universal-cookie";
 import axios from "axios";
-import {
-  faArrowRightFromBracket,
-  faPenToSquare,
-} from "@fortawesome/free-solid-svg-icons";
+import { minidenticon } from "minidenticons";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 export default function Welcome(props) {
   const cookies = new Cookies();
@@ -18,8 +16,18 @@ export default function Welcome(props) {
       Authorization: `Bearer ${token}`,
     },
   };
+
+  const MinidenticonImg = ({ username, saturation, lightness, ...props }) => {
+    const svgURI = useMemo(
+      () =>
+        "data:image/svg+xml;utf8," +
+        encodeURIComponent(minidenticon(username, saturation, lightness)),
+      [username, saturation, lightness]
+    );
+    return <img src={svgURI} alt={username} {...props} />;
+  };
+
   useEffect(() => {
-    
     axios
       .get("http://localhost:8257/user/profile", config)
       .then((res) => setName(res.data));
@@ -53,6 +61,13 @@ export default function Welcome(props) {
                 icon={faArrowRightFromBracket}
               />
             </Button>
+            <MinidenticonImg
+              username={name}
+              // username='prashant'
+              saturation="90"
+              width="75"
+              height="75"
+            />
           </Col>
         )}
       </Row>

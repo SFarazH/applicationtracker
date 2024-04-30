@@ -22,7 +22,7 @@
   background-color: transparent;
   border: none;
   font-size: 30px;
-  color: #ED1B24;
+  color: #ed1b24;
   cursor: pointer;
 }
 
@@ -127,3 +127,58 @@ table tr td,
 table tr th {
   background-color: rgba(210, 130, 240, 0) !important;
 }
+
+
+/* dropwdown navbar */
+
+#dropdown-basic::after {
+  content: none;
+  border-color: transparent;
+}
+
+.dropdown-menu {
+  background-color: #171123 !important;
+  min-width: 0px !important;
+  padding: 0px !important;
+  
+  
+}
+
+.dropdown-menu a{
+  color: white !important;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+
+.dropdown-menu a:hover{
+  
+  background-color: red !important;
+  border-radius: 5px;
+}
+
+.dropdown-menu a:active{
+  background-color: transparent !important;
+}
+
+/* Tab styling */
+button.active{
+  background-color: #18314f !important;
+  color: white !important;
+  
+}
+
+button.nav-link, button.nav-link:hover {
+  font-size: 1.3em !important;
+  color: black;
+  font-weight: 500;
+}
+
+button.nav-link:hover{
+  background-color: lightskyblue;
+}
+
+ul, button.active{
+  border-color: black !important;
+}
+

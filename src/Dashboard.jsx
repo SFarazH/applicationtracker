@@ -14,7 +14,6 @@ export default function Dashboard() {
     <div className="Dashboard">
       <Container id="welcome" fluid>
         <Container>
-          <Welcome name={name}></Welcome>
         </Container>
       </Container>
       <Container className="min-vh-100" fluid>

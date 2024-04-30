@@ -5,7 +5,6 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Cookies from "universal-cookie";
 import AppForm from "./AppForm";
-import { FaCircle } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { MdModeEdit } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
@@ -95,13 +94,13 @@ export default function Application(props) {
         {/* <ResumeForm/> */}
         <Table>
           <colgroup>
-            <col style={{ width: "15%" }} />
+            <col style={{ width: "12%" }} />
             <col style={{ width: "20%" }} />
             <col style={{ width: "15%" }} />
             <col style={{ width: "28%" }} />
             <col style={{ width: "12%" }} />
             <col style={{ width: "5%" }} />
-            <col style={{ width: "5%" }} />
+            <col style={{ width: "8%" }} />
           </colgroup>
           <thead>
             <tr>
@@ -184,7 +183,7 @@ export default function Application(props) {
                           setIdStatus("");
                         }}
                       >
-                        <TiTick size="2em" color="green" />
+                        <TiTick size="1.7em" color="green" />
                       </Button>
                     ) : (
                       <Button

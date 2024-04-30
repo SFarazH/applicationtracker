@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import Cookies from "universal-cookie";
@@ -8,7 +8,22 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLogin] = useState(false);
+
   const cookies = new Cookies();
+  const [isLogged, setLogged] = useState(cookies.cookies.TOKEN);
+
+  useEffect(() => {
+    const token = cookies.cookies.TOKEN;
+    if (token) {
+      setLogged(true);
+    } else {
+      setLogged(false);
+    }
+  }, []);
+  {
+    isLogged && (window.location.href = "/dashboard");
+  }
+
   // console.log(cookies);
   const handleSubmit = (e) => {
     e.preventDefault();

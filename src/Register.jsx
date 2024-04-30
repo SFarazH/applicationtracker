@@ -1,13 +1,29 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(false);
   const [name, setName] = useState("");
+
+  const cookies = new Cookies();
+  const [isLogged, setLogged] = useState(cookies.cookies.TOKEN);
+
+  useEffect(() => {
+    const token = cookies.cookies.TOKEN;
+    if (token) {
+      setLogged(true);
+    } else {
+      setLogged(false);
+    }
+  }, []);
+  {
+    isLogged && (window.location.href = "/dashboard");
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
