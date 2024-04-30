@@ -4,6 +4,8 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "universal-cookie";
+import { FaCirclePlus, FaCircleXmark } from "react-icons/fa6";
+import { RiAddCircleLine, RiCloseCircleLine } from "react-icons/ri";
 
 export default function Notes() {
   const cookies = new Cookies();
@@ -72,26 +74,6 @@ export default function Notes() {
       .catch((error) => console.log(error));
   };
 
-  // const displayNotes = () => {
-  //   return notesArr.map((notes) => {
-  //     return (
-  //       <>
-  //         <div key={notes.noteId} className="card position-relative my-2 notes">
-  //           <div className="card-body pt-4">
-  //             <p className="card-text">{notes.note}</p>
-  //           </div>
-  //           <button
-  //             onClick={() => deleteNote(notes.noteId)}
-  //             className="delete-btn position-absolute top-0 end-0"
-  //           >
-  //             ×
-  //           </button>
-  //         </div>
-  //       </>
-  //     );
-  //   });
-  // };
-
   const displayNotes = () => {
     return notesArr.map((note) => (
       <div key={note.noteId} className="card position-relative my-2 notes">
@@ -99,6 +81,7 @@ export default function Notes() {
           <p className="card-text">{note.note}</p>
         </div>
         <button
+        color="#ED1B24"
           onClick={() => deleteNote(note.noteId)}
           className="delete-btn position-absolute top-0 end-0"
         >
@@ -121,19 +104,23 @@ export default function Notes() {
           </div>
 
           {displayForm ? (
-            <Button
-              variant="danger"
-              className="rounded-circle"
+            <RiCloseCircleLine
               onClick={() => {
                 setDisplay(false);
               }}
-            >
-              ×
-            </Button>
+              size="1.8em"
+              cursor="pointer"
+              color="#FFD700"
+            />
           ) : (
-            <Button className="rounded-circle" onClick={() => setDisplay(true)}>
-              +
-            </Button>
+            <RiAddCircleLine
+              onClick={() => {
+                setDisplay(true);
+              }}
+              size="1.8em"
+              cursor="pointer"
+              color="yellow"
+            />
           )}
         </div>
         {displayForm && (

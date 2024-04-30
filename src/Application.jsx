@@ -6,8 +6,11 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import Cookies from "universal-cookie";
 import AppForm from "./AppForm";
 import { FaCircle } from "react-icons/fa";
-import Resume from "./Resume";
-import ResumeForm from "./ResumeForm";
+import { ImCross } from "react-icons/im";
+import { MdModeEdit } from "react-icons/md";
+import { TiTick } from "react-icons/ti";
+import { FaCirclePlus, FaCircleXmark } from "react-icons/fa6";
+import { RiCheckboxBlankCircleFill } from "react-icons/ri";
 
 export default function Application(props) {
   const cookies = new Cookies();
@@ -25,9 +28,12 @@ export default function Application(props) {
     let color = "";
     switch (status) {
       case "Pending":
-        color = "yellow";
+        color = "gold";
         break;
       case "Shortlisted":
+        color = "green";
+        break;
+      case "Interview":
         color = "green";
         break;
       case "Rejected":
@@ -35,13 +41,16 @@ export default function Application(props) {
         break;
 
       default:
-        color = "yellow";
+        color = "#F8E800";
     }
 
     return (
       <>
         <td className=" align-items-center">
-          <FaCircle color={color} className="mx-2" />
+          <RiCheckboxBlankCircleFill
+            color={color}
+            style={{ marginRight: "4px" }}
+          />
           {status}
         </td>
       </>
@@ -85,6 +94,15 @@ export default function Application(props) {
       <>
         {/* <ResumeForm/> */}
         <Table>
+          <colgroup>
+            <col style={{ width: "15%" }} />
+            <col style={{ width: "20%" }} />
+            <col style={{ width: "15%" }} />
+            <col style={{ width: "28%" }} />
+            <col style={{ width: "12%" }} />
+            <col style={{ width: "5%" }} />
+            <col style={{ width: "5%" }} />
+          </colgroup>
           <thead>
             <tr>
               <th>Company</th>
@@ -104,7 +122,7 @@ export default function Application(props) {
                   <td>{app.jobRole}</td>
                   <td>{app.platform}</td>
 
-                  <td>
+                  <td className="p-0">
                     {app.appId === idupdateStatus ? (
                       <Form.Select
                         name="status"
@@ -117,6 +135,7 @@ export default function Application(props) {
                           Pending (Referral)
                         </option>
                         <option value="Shortlisted">Shortlisted</option>
+                        <option value="Interview">Interview</option>
                         <option value="Rejected">Rejected</option>
                       </Form.Select>
                     ) : (
@@ -126,26 +145,18 @@ export default function Application(props) {
                   <td>{formatDate(app.dateApplied)}</td>
                   <td>
                     <Button
-                      style={{
-                        backgroundColor: "transparent",
-                        color: "red",
-                        border: "none",
-                        fontSize: "25px",
-                        padding: "0px",
-                      }}
-                      variant="danger"
-                      size="sm"
+                      variant="transparent"
                       onClick={() => {
                         confirmDelete(app.appId);
                       }}
                     >
-                      ×
+                      <ImCross color="red" size="1.4em" />
                     </Button>
                   </td>
                   <td>
                     {app.appId === idupdateStatus ? (
                       <Button
-                        variant="success"
+                        variant="transparent"
                         onClick={() => {
                           const config = {
                             method: "patch",
@@ -158,7 +169,6 @@ export default function Application(props) {
                               Authorization: `Bearer ${token}`,
                             },
                           };
-                          console.log(updatedStatus);
 
                           if (updatedStatus.length > 0) {
                             axios(config)
@@ -174,17 +184,16 @@ export default function Application(props) {
                           setIdStatus("");
                         }}
                       >
-                        ok
+                        <TiTick size="2em" color="green" />
                       </Button>
                     ) : (
                       <Button
-                        variant="danger"
-                        size="sm"
+                        variant="transparent"
                         onClick={() => {
                           setIdStatus(app.appId);
                         }}
                       >
-                        edit
+                        <MdModeEdit color="forestgreen" size="1.7em" />
                       </Button>
                     )}
                   </td>
@@ -242,31 +251,28 @@ export default function Application(props) {
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3 className="">Application</h3>
         {showForm ? (
-          <Button
-            className="rounded-circle"
-            variant="danger"
+          <FaCircleXmark
             onClick={() => {
               setShow(false);
             }}
-          >
-            ×
-          </Button>
+            size="1.8em"
+            cursor="pointer"
+            color="#ED1B24"
+          />
         ) : (
-          <Button
-            className="rounded-circle"
+          <FaCirclePlus
             onClick={() => {
               setShow(true);
             }}
-          >
-            +
-          </Button>
+            size="1.8em"
+            cursor="pointer"
+            color="green"
+          />
         )}
       </div>
 
       {showForm && <AppForm setAdd={setAdd} setShow={setShow} />}
       {displayApplications()}
-      <Resume/>
-      
     </>
   );
 }

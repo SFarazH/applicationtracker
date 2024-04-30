@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Button, Container, Col, Row } from "react-bootstrap";
 import Cookies from "universal-cookie";
 
 export default function ResumeForm(props) {
@@ -53,27 +53,43 @@ export default function ResumeForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     addResume(file, role);
+    props.setShow(false);
   };
 
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formRole">
-          <Form.Label>Role</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter role"
-            value={role}
-            onChange={handleRoleChange}
-          />
-        </Form.Group>
-        <Form.Group  controlId="formFile">
-          <Form.Label>File (Max 16MB)</Form.Label>
-          <Form.Control type="file" onChange={handleFileChange} />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Row>
+          <Col lg={5}>
+            <Form.Group controlId="formRole">
+              <Row className="align-items-center">
+                <Col lg={2}>
+                  <Form.Label lg={4} className="m-0">
+                    Role
+                  </Form.Label>
+                </Col>
+                <Col lg={10}>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter role"
+                    value={role}
+                    onChange={handleRoleChange}
+                  />
+                </Col>
+              </Row>
+            </Form.Group>
+          </Col>
+          <Col lg={5}>
+            <Form.Group controlId="formFile">
+              <Form.Control type="file" onChange={handleFileChange} />
+            </Form.Group>
+          </Col>
+          <Col lg={2}>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </Container>
   );
