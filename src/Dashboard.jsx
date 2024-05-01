@@ -12,13 +12,14 @@ export default function Dashboard() {
 
   return (
     <div className="Dashboard">
-      {/* <Container id="welcome" fluid>
+      <Container id="welcome" fluid>
         <Container>
+          {/* <Welcome name={name}></Welcome> */}
         </Container>
-      </Container> */}
+      </Container>
       <Container className="min-vh-100" fluid>
         <Row id="appRow">
-          <Col lg={{ span: 8 }} className="min-vh-100 p-4">
+          <Col lg={{ span: 8 }} className="min-vh-100 p-3">
             <Tabs
               defaultActiveKey="profile"
               id="justify-tab-example"

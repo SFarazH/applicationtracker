@@ -63,7 +63,7 @@ export default function Nav() {
           <div className="navbarHeader poppins-bold">Application Tracker</div>
           {isLogged && (
             <>
-              <h3 className="navbarHeader">
+              <h3 className="navbarHeader d-none d-sm-block" >
                 Hello {name}! <span className="waving-hand">👋</span>
               </h3>
 
