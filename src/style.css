@@ -196,11 +196,10 @@ button.active {
   background-color: #18314f;
 }
 
-#resumeCard {
-  
-}
-
 #cardBody {
   border: 1px solid #18314f;
+}
 
+.tableScroll {
+  overflow-x: auto;
 }

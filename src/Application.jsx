@@ -1,6 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Navbar, Table, Form, Row, Col } from "react-bootstrap";
+import {
+  Button,
+  Navbar,
+  Table,
+  Form,
+  Row,
+  Col,
+  Container,
+} from "react-bootstrap";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Cookies from "universal-cookie";
@@ -85,22 +93,21 @@ export default function Application(props) {
     const year = date.getFullYear().toString().slice(-2);
     const suffix =
       day === 1 ? "st" : day === 2 ? "nd" : day === 3 ? "rd" : "th";
-    return `${day}${suffix} ${month} '${year}`;
+    return `${day} ${month} `;
   };
 
   const displayApplications = () => {
     return (
       <>
-        {/* <ResumeForm/> */}
-        <Table>
+        <Table striped bordered responsive="md" >
           <colgroup>
             <col style={{ width: "12%" }} />
             <col style={{ width: "20%" }} />
             <col style={{ width: "15%" }} />
             <col style={{ width: "28%" }} />
-            <col style={{ width: "12%" }} />
-            <col style={{ width: "5%" }} />
-            <col style={{ width: "8%" }} />
+            <col style={{ width: "20%" }} />
+            <col style={{ width: "1%" }} />
+            <col style={{ width: "1%" }} />
           </colgroup>
           <thead>
             <tr>
@@ -113,15 +120,15 @@ export default function Application(props) {
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {data.toReversed().map((app) => {
               return (
-                <tr key={app.appId}>
-                  <td>{app.company}</td>
-                  <td>{app.jobRole}</td>
-                  <td>{app.platform}</td>
+                <tr  key={app.appId}>
+                  <td className="px-3">{app.company}</td>
+                  <td className="px-3">{app.jobRole}</td>
+                  <td className="px-3">{app.platform}</td>
 
-                  <td className="p-0">
+                  <td className="px-2">
                     {app.appId === idupdateStatus ? (
                       <Form.Select
                         name="status"
@@ -141,7 +148,7 @@ export default function Application(props) {
                       displayStatus(app.status)
                     )}
                   </td>
-                  <td>{formatDate(app.dateApplied)}</td>
+                  <td className="px-3">{formatDate(app.dateApplied)}</td>
                   <td>
                     <Button
                       variant="transparent"
@@ -271,7 +278,7 @@ export default function Application(props) {
       </div>
 
       {showForm && <AppForm setAdd={setAdd} setShow={setShow} />}
-      {displayApplications()}
+      <div className="tableScroll">{displayApplications()}</div>
     </>
   );
 }
