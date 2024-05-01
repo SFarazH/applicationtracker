@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { v4 } from "uuid";
 import axios from "axios";
 import Cookies from "universal-cookie";
@@ -68,15 +68,18 @@ export default function AppForm({ setAdd, setShow }) {
   };
 
   return (
-    <div>
+    <Container className="px-4 pb-4">
       <div id="formCard" className="card">
         <Form onSubmit={handleSubmit}>
+          <Form.Label className="">
+            <h5>Add Application</h5>
+          </Form.Label>
           <Form.Group controlId="companyName">
             <Row className="mb-3">
               <Col lg={3}>
                 <Form.Label>Company Name</Form.Label>
               </Col>
-              <Col lg={9}>
+              <Col  lg={9}>
                 <Form.Control
                   type="text"
                   placeholder="Enter company name"
@@ -169,6 +172,6 @@ export default function AppForm({ setAdd, setShow }) {
           </Button>
         </Form>
       </div>
-    </div>
+    </Container>
   );
 }

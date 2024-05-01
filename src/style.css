@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+.dropdown-menu {
+  --bs-dropdown-link-hover-bg: transparent !important;
+  --bs-dropdown-link-active-color: transparent !important;
+  /* --bs-dropdown-link-active-bg: transparent; */
+}
+
 * {
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -102,7 +108,7 @@ td {
   }
   15% {
     transform: rotate(14deg);
-  } /* The following five values can be played with to make the waving more or less extreme */
+  }
   30% {
     transform: rotate(-8deg);
   }
@@ -117,7 +123,7 @@ td {
   }
   70% {
     transform: rotate(0deg);
-  } /* Reset for the last half to pause */
+  }
   100% {
     transform: rotate(0deg);
   }
@@ -127,7 +133,6 @@ table tr td,
 table tr th {
   background-color: rgba(210, 130, 240, 0) !important;
 }
-
 
 /* dropwdown navbar */
 
@@ -140,45 +145,62 @@ table tr th {
   background-color: #171123 !important;
   min-width: 0px !important;
   padding: 0px !important;
-  
-  
 }
 
-.dropdown-menu a{
+.dropdown-menu a {
   color: white !important;
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
-
-.dropdown-menu a:hover{
-  
+.dropdown-menu a:hover {
   background-color: red !important;
   border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.dropdown-menu a:active{
+.dropdown-menu a {
+  margin: 0px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.dropdown-menu a:active {
   background-color: transparent !important;
 }
 
 /* Tab styling */
-button.active{
+button.active {
   background-color: #18314f !important;
   color: white !important;
-  
 }
 
-button.nav-link, button.nav-link:hover {
+button.nav-link,
+button.nav-link:hover {
   font-size: 1.3em !important;
   color: black;
   font-weight: 500;
 }
 
-button.nav-link:hover{
+button.nav-link:hover {
   background-color: lightskyblue;
 }
 
-ul, button.active{
+ul,
+button.active {
   border-color: black !important;
 }
 
+/* resume card */
+#resumeCardTitle {
+  background-color: #18314f;
+}
+
+#resumeCard {
+  
+}
+
+#cardBody {
+  border: 1px solid #18314f;
+
+}
