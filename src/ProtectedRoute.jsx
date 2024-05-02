@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Navigate, Routes, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 
 export default function ProtectedRoutes({ children }) {

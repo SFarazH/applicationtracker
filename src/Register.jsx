@@ -29,7 +29,7 @@ export default function Register() {
     e.preventDefault();
     const configuration = {
       method: "post",
-      url: "http://localhost:8257/auth/register",
+      url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/auth/register",
       data: {
         email,
         password,

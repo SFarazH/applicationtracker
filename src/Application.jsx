@@ -1,14 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Navbar,
-  Table,
-  Form,
-  Row,
-  Col,
-  Container,
-} from "react-bootstrap";
+import { Button, Form, Table } from "react-bootstrap";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Cookies from "universal-cookie";
@@ -68,7 +60,7 @@ export default function Application(props) {
     console.log(id);
     const config = {
       method: "patch",
-      url: "http://localhost:8257/user/app/rem",
+      url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/app/rem",
       data: {
         appId: id,
       },
@@ -99,7 +91,7 @@ export default function Application(props) {
   const displayApplications = () => {
     return (
       <>
-        <Table striped bordered responsive="md" >
+        <Table striped bordered responsive="md">
           <colgroup>
             <col style={{ width: "12%" }} />
             <col style={{ width: "20%" }} />
@@ -120,10 +112,10 @@ export default function Application(props) {
               <th></th>
             </tr>
           </thead>
-          <tbody >
+          <tbody>
             {data.toReversed().map((app) => {
               return (
-                <tr  key={app.appId}>
+                <tr key={app.appId}>
                   <td className="px-3">{app.company}</td>
                   <td className="px-3">{app.jobRole}</td>
                   <td className="px-3">{app.platform}</td>
@@ -166,7 +158,7 @@ export default function Application(props) {
                         onClick={() => {
                           const config = {
                             method: "patch",
-                            url: "http://localhost:8257/user/app/status",
+                            url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/app/status",
                             data: {
                               appId: app.appId,
                               status: updatedStatus,
@@ -237,7 +229,7 @@ export default function Application(props) {
   };
 
   useEffect(() => {
-    const url = `http://localhost:8257/user/app/get`;
+    const url = `https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/app/get`;
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,

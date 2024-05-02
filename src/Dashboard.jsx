@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { Button, Col, Row, Container, Tab, Tabs } from "react-bootstrap";
+import { Col, Row, Container, Tab, Tabs } from "react-bootstrap";
 import Application from "./Application";
 import Notes from "./Notes";
-import Welcome from "./Welcome";
 import Resume from "./Resume";
 
 export default function Dashboard() {

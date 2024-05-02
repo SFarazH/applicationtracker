@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
-import { v4 } from "uuid";
+// import { v4 } from "uuid";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
@@ -23,7 +23,7 @@ export default function AppForm({ setAdd, setShow }) {
         Authorization: `Bearer ${token}`,
       },
       method: "post",
-      url: "http://localhost:8257/user/app/add",
+      url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/app/add",
       data: formData,
     };
     console.log(formData);
@@ -79,7 +79,7 @@ export default function AppForm({ setAdd, setShow }) {
               <Col lg={3}>
                 <Form.Label>Company Name</Form.Label>
               </Col>
-              <Col  lg={9}>
+              <Col lg={9}>
                 <Form.Control
                   type="text"
                   placeholder="Enter company name"

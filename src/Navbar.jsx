@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import Cookies from "universal-cookie";
-import { Button, Container, DropdownItem, Navbar } from "react-bootstrap";
+import { Container, DropdownItem, Navbar } from "react-bootstrap";
 import axios from "axios";
 import { minidenticon } from "minidenticons";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -8,7 +8,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 export default function Nav() {
   const cookies = new Cookies();
   const token = cookies.cookies.TOKEN;
-  const email = sessionStorage.getItem("email");
+  // const email = sessionStorage.getItem("email");
   const [isLogged, setLogged] = useState(cookies.cookies.TOKEN);
   const [name, setName] = useState("");
   const config = {
@@ -20,7 +20,10 @@ export default function Nav() {
   useEffect(() => {
     isLogged &&
       axios
-        .get("http://localhost:8257/user/profile", config)
+        .get(
+          "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/profile",
+          config
+        )
         .then((res) => setName(res.data));
     if (token) {
       setLogged(true);
@@ -63,7 +66,7 @@ export default function Nav() {
           <div className="navbarHeader poppins-bold">Application Tracker</div>
           {isLogged && (
             <>
-              <h3 className="navbarHeader d-none d-sm-block" >
+              <h3 className="navbarHeader d-none d-sm-block">
                 Hello {name}! <span className="waving-hand">👋</span>
               </h3>
 

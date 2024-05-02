@@ -15,7 +15,7 @@ export default function Resume() {
   const token = cookies.cookies.TOKEN;
 
   useEffect(() => {
-    const url = `http://localhost:8257/user/resume/all`;
+    const url = `https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/resume/all`;
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -34,61 +34,68 @@ export default function Resume() {
 
   const ResumeCard = (props) => {
     return (
-      <Card bg="transparent" id='resumeCard'>
-        <Card.Body className="p-0" >
-          <Card.Title className="m-0 p-3 rounded-top text-white" id='resumeCardTitle' >{props.resume.role} Resume</Card.Title>
-          <Card.Text id="cardBody" className="d-flex justify-content-between p-3 rounded-bottom">
-          <Button
-            variant="transparent"
-            className="p-0"
-            onClick={() => {
-              const config = {
-                method: "get",
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-                url: `http://localhost:8257/user/resume/resumes?rId=${props.resume.rId}`,
-                responseType: "blob",
-              };
-              axios(config)
-                .then((res) => {
-                  const blobUrl = window.URL.createObjectURL(
-                    new Blob([res.data], { type: "application/pdf" })
-                  );
-                  // Open the blob URL in a new tab
-                  window.open(blobUrl, "_blank");
-                })
-                .catch((error) => console.log(error));
-            }}
+      <Card bg="transparent" id="resumeCard">
+        <Card.Body className="p-0">
+          <Card.Title
+            className="m-0 p-3 rounded-top text-white"
+            id="resumeCardTitle"
           >
-            <FaFilePdf fontSize="3em" />
-          </Button>
-          <Button
-            variant="transparent"
-            onClick={() => {
-              const config = {
-                method: "patch",
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-                url: `http://localhost:8257/user/resume/rem`,
-                data: {
-                  rId: props.resume.rId,
-                  app_rId: props.resume.app_rId,
-                },
-              };
-              axios(config)
-                .then((res) => {
-                  console.log("Resume removed");
-                  setUpdate((prev) => prev - 1);
-                })
-                .catch((error) => console.log(error));
-            }}
+            {props.resume.role} Resume
+          </Card.Title>
+          <Card.Text
+            id="cardBody"
+            className="d-flex justify-content-between p-3 rounded-bottom"
           >
-            <ImCross color="red" fontSize="1.3em" />
-          </Button>
+            <Button
+              variant="transparent"
+              className="p-0"
+              onClick={() => {
+                const config = {
+                  method: "get",
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                  url: `https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/resume/resumes?rId=${props.resume.rId}`,
+                  responseType: "blob",
+                };
+                axios(config)
+                  .then((res) => {
+                    const blobUrl = window.URL.createObjectURL(
+                      new Blob([res.data], { type: "application/pdf" })
+                    );
+                    // Open the blob URL in a new tab
+                    window.open(blobUrl, "_blank");
+                  })
+                  .catch((error) => console.log(error));
+              }}
+            >
+              <FaFilePdf fontSize="3em" />
+            </Button>
+            <Button
+              variant="transparent"
+              onClick={() => {
+                const config = {
+                  method: "patch",
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                  url: `https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/resume/rem`,
+                  data: {
+                    rId: props.resume.rId,
+                    app_rId: props.resume.app_rId,
+                  },
+                };
+                axios(config)
+                  .then((res) => {
+                    console.log("Resume removed");
+                    setUpdate((prev) => prev - 1);
+                  })
+                  .catch((error) => console.log(error));
+              }}
+            >
+              <ImCross color="red" fontSize="1.3em" />
+            </Button>
           </Card.Text>
-          
         </Card.Body>
       </Card>
     );
@@ -98,14 +105,13 @@ export default function Resume() {
     return (
       <>
         <Container fluid>
-          <Row >
+          <Row>
             {resumeData.map((resume) => {
               return (
                 <>
                   <Col lg={4} md={4} sm={4} className="my-2">
                     <ResumeCard resume={resume} />
                   </Col>
-
                 </>
               );
             })}

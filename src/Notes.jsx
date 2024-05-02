@@ -4,7 +4,6 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "universal-cookie";
-import { FaCirclePlus, FaCircleXmark } from "react-icons/fa6";
 import { RiAddCircleLine, RiCloseCircleLine } from "react-icons/ri";
 
 export default function Notes() {
@@ -25,10 +24,15 @@ export default function Notes() {
         Authorization: `Bearer ${token}`,
       },
     };
-    axios.get("http://localhost:8257/user/notes/get", config).then((res) => {
-      setNotesArr((prev) => [...res.data.notes]);
-      console.log(res.data.notes);
-    });
+    axios
+      .get(
+        "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/notes/get",
+        config
+      )
+      .then((res) => {
+        setNotesArr((prev) => [...res.data.notes]);
+        console.log(res.data.notes);
+      });
   }, [submit, email]);
 
   const handleChange = (e) => {
@@ -44,7 +48,7 @@ export default function Notes() {
         Authorization: `Bearer ${token}`,
       },
       method: "post",
-      url: "http://localhost:8257/user/notes/add",
+      url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/notes/add",
       data: {
         note: note,
       },
@@ -67,7 +71,7 @@ export default function Notes() {
         Authorization: `Bearer ${token}`,
       },
       method: "patch",
-      url: "http://localhost:8257/user/notes/rem",
+      url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/notes/rem",
     };
     axios(config)
       .then((res) => addSubmit((prev) => prev - 1))
@@ -81,7 +85,7 @@ export default function Notes() {
           <p className="card-text">{note.note}</p>
         </div>
         <button
-        color="#ED1B24"
+          color="#ED1B24"
           onClick={() => deleteNote(note.noteId)}
           className="delete-btn position-absolute top-0 end-0"
         >

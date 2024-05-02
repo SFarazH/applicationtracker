@@ -34,7 +34,7 @@ export default function ResumeForm(props) {
         Authorization: `Bearer ${token}`,
       },
       method: "post",
-      url: "http://localhost:8257/user/resume/add",
+      url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/resume/add",
       data: formData,
     };
     console.log(formData);
