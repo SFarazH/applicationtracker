@@ -23,7 +23,7 @@ export default function AppForm({ setAdd, setShow }) {
         Authorization: `Bearer ${token}`,
       },
       method: "post",
-      url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/app/add",
+      url: "http://localhost:8257/user/app/add",
       data: formData,
     };
     console.log(formData);

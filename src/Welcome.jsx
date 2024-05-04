@@ -29,10 +29,7 @@ export default function Welcome(props) {
 
   useEffect(() => {
     axios
-      .get(
-        "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/profile",
-        config
-      )
+      .get("http://localhost:8257/user/profile", config)
       .then((res) => setName(res.data));
     if (token) {
       setLogged(true);

@@ -29,7 +29,7 @@ export default function Login() {
     e.preventDefault();
     const configuration = {
       method: "post",
-      url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/auth/login",
+      url: "http://localhost:8257/auth/login",
       data: {
         email,
         password,

@@ -60,7 +60,7 @@ export default function Application(props) {
     console.log(id);
     const config = {
       method: "patch",
-      url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/app/rem",
+      url: "http://localhost:8257/user/app/rem",
       data: {
         appId: id,
       },
@@ -158,7 +158,7 @@ export default function Application(props) {
                         onClick={() => {
                           const config = {
                             method: "patch",
-                            url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/app/status",
+                            url: "http://localhost:8257/user/app/status",
                             data: {
                               appId: app.appId,
                               status: updatedStatus,
@@ -229,7 +229,7 @@ export default function Application(props) {
   };
 
   useEffect(() => {
-    const url = `https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/app/get`;
+    const url = `http://localhost:8257/user/app/get`;
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
