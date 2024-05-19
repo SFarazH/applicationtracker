@@ -15,7 +15,7 @@ export default function Resume() {
   const token = cookies.cookies.TOKEN;
 
   useEffect(() => {
-    const url = `http://localhost:8257/user/resume/all`;
+    const url = `https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/resume/all`;
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -55,7 +55,7 @@ export default function Resume() {
                   headers: {
                     Authorization: `Bearer ${token}`,
                   },
-                  url: `http://localhost:8257/user/resume/resumes?rId=${props.resume.rId}`,
+                  url: `https://application-api-6n5d.onrender.com/user/resume/resumes?rId=${props.resume.rId}`,
                   responseType: "blob",
                 };
                 axios(config)
@@ -79,7 +79,7 @@ export default function Resume() {
                   headers: {
                     Authorization: `Bearer ${token}`,
                   },
-                  url: `http://localhost:8257/user/resume/rem`,
+                  url: `https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/resume/rem`,
                   data: {
                     rId: props.resume.rId,
                     app_rId: props.resume.app_rId,

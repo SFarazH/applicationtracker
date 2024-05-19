@@ -20,7 +20,10 @@ export default function Nav() {
   useEffect(() => {
     isLogged &&
       axios
-        .get("http://localhost:8257/user/profile", config)
+        .get(
+          "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/profile",
+          config
+        )
         .then((res) => setName(res.data));
     if (token) {
       setLogged(true);
@@ -94,7 +97,7 @@ export default function Nav() {
         </Container>
       </Navbar>
       <div className="navbar my-0 py-0">
-      <Container>
+        <Container>
           {isLogged && (
             <>
               <h4 className="text-white d-lg-none d-block">

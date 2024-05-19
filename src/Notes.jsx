@@ -24,10 +24,15 @@ export default function Notes() {
         Authorization: `Bearer ${token}`,
       },
     };
-    axios.get("http://localhost:8257/user/notes/get", config).then((res) => {
-      setNotesArr((prev) => [...res.data.notes]);
-      console.log(res.data.notes);
-    });
+    axios
+      .get(
+        "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/notes/get",
+        config
+      )
+      .then((res) => {
+        setNotesArr((prev) => [...res.data.notes]);
+        console.log(res.data.notes);
+      });
   }, [submit, email]);
 
   const handleChange = (e) => {
@@ -43,7 +48,7 @@ export default function Notes() {
         Authorization: `Bearer ${token}`,
       },
       method: "post",
-      url: "http://localhost:8257/user/notes/add",
+      url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/notes/add",
       data: {
         note: note,
       },
@@ -66,7 +71,7 @@ export default function Notes() {
         Authorization: `Bearer ${token}`,
       },
       method: "patch",
-      url: "http://localhost:8257/user/notes/rem",
+      url: "https://e5z5x2yptp4auqanzhsyyxrqpu0qdfcy.lambda-url.ap-south-1.on.aws/user/notes/rem",
     };
     axios(config)
       .then((res) => addSubmit((prev) => prev - 1))
